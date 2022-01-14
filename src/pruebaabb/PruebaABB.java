@@ -45,9 +45,6 @@ public class PruebaABB {
 
         abb.imprimir();
 
-        System.out.println("Preorden:");
-        abb.preorden();
-
         // 1. Escriba un método que recorra todos los elementos del ABB
         //    pero sin utilizar recursividad.
         // 2. Escriba el método agregar pero sin utilizar recursividad. LLame 

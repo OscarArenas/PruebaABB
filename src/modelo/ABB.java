@@ -31,32 +31,30 @@ public class ABB {
     }
 
     public boolean agregar(int dato) {
-        if (raiz == null) {
-            raiz = new NodoBinario(dato);
-            n++;
-            return true;
-        }
-        return agregar(raiz, dato);
-    }
+        NodoBinario actual = raiz;
+        NodoBinario padre = null;
 
-    // helper
-    private boolean agregar(NodoBinario r, int dato) {
-        if (dato < r.dato) {
-            if (r.hijoIzquierdo == null) {
-                r.hijoIzquierdo = new NodoBinario(dato);
-                n++;
-                return true;
+        while (actual != null) {
+            padre = actual;
+            if (dato < actual.dato) {
+                actual = actual.hijoIzquierdo;
+            } else if (dato > actual.dato) {
+                actual = actual.hijoDerecho;
+            } else {
+                return false;
             }
-            return agregar(r.hijoIzquierdo, dato);
-        } else if (dato > r.dato) {
-            if (r.hijoDerecho == null) {
-                r.hijoDerecho = new NodoBinario(dato);
-                n++;
-                return true;
-            }
-            return agregar(r.hijoDerecho, dato);
         }
-        return false;
+        NodoBinario nuevoNodo = new NodoBinario(dato);
+
+        if (padre == null) {
+            raiz = nuevoNodo;
+        } else if (dato < padre.dato) {
+            padre.hijoIzquierdo = nuevoNodo;
+        } else {
+            padre.hijoDerecho = nuevoNodo;
+        }
+        n++;
+        return true;
     }
 
     public boolean eliminar(int dato) {
@@ -110,26 +108,8 @@ public class ABB {
         return true;
     }
 
-    // Sin recursividad
-    public boolean adicionar(int dato) {
-        return false;
-    }
-
     public int tamanio() {
         return n;
-    }
-
-    public void preorden() {
-        preorden(raiz);
-        System.out.println();
-    }
-
-    private void preorden(NodoBinario r) {
-        if (r != null) {
-            System.out.print(r.dato + " ");
-            preorden(r.hijoIzquierdo);
-            preorden(r.hijoDerecho);
-        }
     }
 
     public void imprimir() {
