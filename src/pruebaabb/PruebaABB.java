@@ -47,7 +47,8 @@ public class PruebaABB {
 
         // 1. Escriba un método que recorra todos los elementos del ABB
         //    pero sin utilizar recursividad.
-        // 2. Escriba el método agregar pero sin utilizar recursividad. LLame 
+        // 2. Escriba el método agregar pero utilizando recursividad. LLame 
         //    este método 'adicionar'.
+        // 3. Escriba un método que retorne la cantidad de hojas del ABB.
     }
 }

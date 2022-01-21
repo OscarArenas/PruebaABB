@@ -58,6 +58,7 @@ public class ABB {
     }
 
     public boolean eliminar(int dato) {
+        // En 'actual' almacenamos la referencia del nodo que se va a eliminar
         NodoBinario actual = raiz;
         NodoBinario padre = null;
 
@@ -78,8 +79,8 @@ public class ABB {
 
         //Caso 1: el actual no tiene hijoIzquierdo
         if (actual.hijoIzquierdo == null) {
-            if (padre == null) {
-                raiz = actual.hijoDerecho;
+            if (padre == null) {// Cuando se va a borrar la raiz
+                raiz = raiz.hijoDerecho;
             } else {
                 if (dato < padre.dato) {
                     padre.hijoIzquierdo = actual.hijoDerecho;
@@ -98,9 +99,11 @@ public class ABB {
             }
             actual.dato = masALaDerecha.dato;
 
+            // Cuando el hijoIzquierdo del actual tiene hijoDerecho  
             if (padreMasALaDerecha.hijoDerecho == masALaDerecha) {
                 padreMasALaDerecha.hijoDerecho = masALaDerecha.hijoIzquierdo;
             } else {
+                // Cuando el hijoIzquierdo del actual no tiene hijoDerecho  
                 padreMasALaDerecha.hijoIzquierdo = masALaDerecha.hijoIzquierdo;
             }
         }
